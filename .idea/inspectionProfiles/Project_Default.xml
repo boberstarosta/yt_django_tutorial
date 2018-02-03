@@ -5,6 +5,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="music.models.Album.objects" />
+          <option value="music.models.Album.DoesNotExist" />
         </list>
       </option>
     </inspection_tool>
