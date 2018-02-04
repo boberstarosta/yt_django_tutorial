@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib import auth
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
@@ -59,11 +59,16 @@ class UserFormView(View):
             user.save()
 
             # Returns user object if credentials are correct
-            user = authenticate(username=username, password=password)
+            user = auth.authenticate(username=username, password=password)
 
             if user is not None:
                 if user.is_active:
-                    login(request, user)
+                    auth.login(request, user)
                     return redirect('music:index')
 
         return render(request, self.template_name, {'form': form})
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('music:index')
