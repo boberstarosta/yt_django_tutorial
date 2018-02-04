@@ -5,7 +5,7 @@ from django.views import generic
 from django.views.generic import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import UserForm
-from .models import Album
+from .models import Album, Song
 
 
 class IndexView(generic.ListView):
@@ -72,3 +72,11 @@ class UserFormView(View):
 def logout(request):
     auth.logout(request)
     return redirect('music:index')
+
+
+class SongListView(generic.ListView):
+    template_name = 'music/songs.html'
+    context_object_name = 'all_songs'
+
+    def get_queryset(self):
+        return Song.objects.all()

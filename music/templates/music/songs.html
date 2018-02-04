@@ -1,0 +1,49 @@
+{% extends 'music/base.html' %}
+
+{% block songs_active %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-9">
+
+            <div class="panel panel-i">
+                <div class="panel-body">
+
+                    <h3>All Songs</h3>
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Artist</th>
+                            <th>Album</th>
+                            <th>Audio File</th>
+                            <th>Favourite</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for song in all_songs %}
+                            <tr>
+                                <td>{{ song.song_title }}</td>
+                                <td>{{ song.album.artist }}</td>
+                                <td>{{ song.album.album_title }}</td>
+                                <td>{{ song.file_type }}</td>
+                                <td>
+                                    {% if song.is_favourite %}
+                                        <span class="glyphicon glyphicon-star"></span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

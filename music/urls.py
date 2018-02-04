@@ -12,4 +12,5 @@ urlpatterns = [
     path('album/<int:pk>/delete', views.AlbumDelete.as_view(), name='album_delete'),
     path('register/', views.UserFormView.as_view(), name='register'),
     path('logout/', views.logout, name='logout'),
+    path('songs/', views.SongListView.as_view(), name='songs'),
 ]
