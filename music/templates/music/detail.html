@@ -20,6 +20,7 @@
                     </a>
                     <h1>{{ album.album_title }} <small>{{ album.genre }}</small></h1>
                     <h2>{{ album.artist }}</h2>
+                    <a href="{% url 'music:album_update' album.id %}" class="btn btn-primary">Edit</a>
                 </div>
             </div>
         </div>
